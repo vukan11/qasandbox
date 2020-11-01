@@ -1,7 +1,8 @@
 // / <reference types="cypress" />
 const assert = require('assert-plus')
+let funkcije =require('../../utils.js')
 
-context('Actions', () => {
+describe('Test cases for Use Case', () => {
     before(() => {
         cy.visit('https://qa-sandbox.apps.htec.rs/intro')
         cy.get('a').contains('Login').click()
@@ -22,33 +23,142 @@ context('Actions', () => {
             console.log(niz)
         })
     })
-    it('Create Use case', () => {
+    
+    it('Create Use case 1', () => {
+        
         cy.get('h5').contains('Use Cases').click()
         cy.get('a').contains('CREATE USE CASE').click()
-        // cy.visit('https://qa-sandbox.apps.htec.rs/create-usecase'
-        // cy.reload(true)
-        cy.get('[name="title"]').type(' Test case Test case 1')
-        cy.get('[name="description"]').type('This is Description This is Description')
+        cy.get('[name="title"]').type('Test case Test case 1')
+        cy.get('[name="description"]').type('This is Description for Use Case 2')
         cy.get('[name="expected_result"]').type('This is expected result')
         cy.get('[name="testStepId-0"]').type('Test step Test case 1')
         cy.get('span').contains('ADD STEP').click()
         cy.get('[name="testStepId-1"]').type('Test step Test case 2')
-        // cy.get('span').contains('ADD STEP').click()
-        // cy.get('[name="testStepId-2"]').type('Test step Test case 3')
-        // cy.get('span').contains('ADD STEP').click()
-        // cy.get('[name="testStepId-3"]').type('Test step Test case 4')
-        // cy.wait(1000)
-        // cy.get('[type="submit"]').then(res => {
-        //     console.log(res )
-        //     cy.get(`.${res[0].className}`).click()
-        // })
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-2"]').type('Test step Test case 3')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-3"]').type('Test step Test case 4')
         cy.get('[for="switch"]').click()
-        // cy.wait(2000)
-        // cy.get('[data-testid="submit_btn"]').click()
-        cy.get('[type="submit"]').click()
-
-        // cy.get('#root > div > div.container > div > div > div > form > button').click({ force: true })
-
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Create Use case 2', () => {
+        cy.get('h5').contains('Use Cases').click()
+        cy.get('a').contains('CREATE USE CASE').click()
+        cy.get('[name="title"]').type('Test case Test case 2')
+        cy.get('[name="description"]').type('This is Description for Use Case 2')
+        cy.get('[name="expected_result"]').type('This is expected result')
+        cy.get('[name="testStepId-0"]').type('Test step Test case 1')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-1"]').type('Test step Test case 2')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-2"]').type('Test step Test case 3')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-3"]').type('Test step Test case 4')        
+        cy.get('[for="switch"]').click()        
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Create Use case 3', () => {
+        cy.get('h5').contains('Use Cases').click()
+        cy.get('a').contains('CREATE USE CASE').click()
+        cy.get('[name="title"]').type('Test case Test case 3')
+        cy.get('[name="description"]').type('This is Description for Use Case 3')
+        cy.get('[name="expected_result"]').type('This is expected result')
+        cy.get('[name="testStepId-0"]').type('Test step Test case 1')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-1"]').type('Test step Test case 2')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-2"]').type('Test step Test case 3')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-3"]').type('Test step Test case 4')        
+        cy.get('[for="switch"]').click()        
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Create Use case 4', () => {
+        cy.get('h5').contains('Use Cases').click()
+        cy.get('a').contains('CREATE USE CASE').click()
+        cy.get('[name="title"]').type('Test case Test case 4')
+        cy.get('[name="description"]').type('This is Description for Use Case 4')
+        cy.get('[name="expected_result"]').type('This is expected result')
+        cy.get('[name="testStepId-0"]').type('Test step Test case 1')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-1"]').type('Test step Test case 2')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-2"]').type('Test step Test case 3')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-3"]').type('Test step Test case 4')        
+        cy.get('[for="switch"]').click()        
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Create Use case 5', () => {
+        cy.get('h5').contains('Use Cases').click()
+        cy.get('a').contains('CREATE USE CASE').click()
+        cy.get('[name="title"]').type('Test case Test case 5')
+        cy.get('[name="description"]').type('This is Description for Use Case 5')
+        cy.get('[name="expected_result"]').type('This is expected result')
+        cy.get('[name="testStepId-0"]').type('Test step Test case 1')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-1"]').type('Test step Test case 2')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-2"]').type('Test step Test case 3')
+        cy.get('span').contains('ADD STEP').click()
+        cy.get('[name="testStepId-3"]').type('Test step Test case 4')        
+        cy.get('[for="switch"]').click()        
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Edit Use case 1',()=>{
+        cy.get('a').contains('Test case Test case 1').click()
+        cy.get('[name="description"]').clear()
+        cy.get('[name="description"]').type(`${funkcije.randomString(10)}`)
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Edit Use case 2',()=>{
+        cy.get('a').contains('Test case Test case 2').click()
+        cy.get('[name="description"]').clear()
+        cy.get('[name="description"]').type(`${funkcije.randomString(10)}`)
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Edit Use case 3',()=>{
+        cy.get('a').contains('Test case Test case 3').click()
+        cy.get('[name="description"]').clear()
+        cy.get('[name="description"]').type(`${funkcije.randomString(10)}`)
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Edit Use case 4',()=>{
+        cy.get('a').contains('Test case Test case 4').click()
+        cy.get('[name="description"]').clear()
+        cy.get('[name="description"]').type(`${funkcije.randomString(10)}`)
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Edit Use case 5',()=>{
+        cy.get('a').contains('Test case Test case 5').click()
+        cy.get('[name="description"]').clear()
+        cy.get('[name="description"]').type(`${funkcije.randomString(10)}`)
+        cy.get('[type="submit"]').click()// not able to click !
+    })
+    it('Delete Use case 1',()=>{
+        cy.get('a').contains('Test case Test case 1').click()
+        cy.get('.fa-trash-alt').click()
+        cy.get('button').contains('Delete')
+    })
+    it('Delete Use case 2',()=>{
+        cy.get('a').contains('Test case Test case 2').click()
+        cy.get('.fa-trash-alt').click()
+        cy.get('button').contains('Delete')
+    })
+    it('Delete Use case 3',()=>{
+        cy.get('a').contains('Test case Test case 3').click()
+        cy.get('.fa-trash-alt').click()
+        cy.get('button').contains('Delete')
+    })
+    it('Delete Use case 4',()=>{
+        cy.get('a').contains('Test case Test case 4').click()
+        cy.get('.fa-trash-alt').click()
+        cy.get('button').contains('Delete')
+    })
+    it('Delete Use case 5',()=>{
+        cy.get('a').contains('Test case Test case 5').click()
+        cy.get('.fa-trash-alt').click()
+        cy.get('button').contains('Delete')
     })
     // it('Create empty test case ',()=>{
     //     cy.get('button').contains('Submit').click()
