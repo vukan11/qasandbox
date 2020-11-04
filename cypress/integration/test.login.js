@@ -2,9 +2,10 @@
 const assert = require('assert-plus')
 
 context('Actions', () => {
-    beforeEach(() => {
+    before(() => {
         cy.visit('https://qa-sandbox.apps.htec.rs/intro')
     })
+    
     it('Locate elements on login page', () => {
         cy.get('b').then(res => {
             assert.strictEqual(res[0].innerText, "QA Sandbox")
