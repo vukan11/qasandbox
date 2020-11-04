@@ -1,29 +1,19 @@
-const { func } = require("assert-plus")
+import "cypress-localstorage-commands";
 
-let LOCAL_STORAGE_MEMORY = {};
+Cypress.Commands.add('loginAs', (UserEmail, UserPwd) => {
+    cy.request({
+        method: 'POST',
+        url: "https://qa-sandbox.apps.htec.rs/api/users/login",
+        body: {
 
-Cypress.Commands.add("saveLocalStorage", () => {
-    Object.keys(localStorage).forEach(key => {
-        LOCAL_STORAGE_MEMORY[key] = localStorage[key];
-    });
+            email: UserEmail,
+            password: UserPwd,
+
+        }
+    })
+        .its('body')
+        .then((body) => {
+            cy.setLocalStorage("jwtToken", body.token);
+            cy.setLocalStorage("jwtRefreshToken", body.refreshToken);
+        });
 });
-
-Cypress.Commands.add("restoreLocalStorage", () => {
-    Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
-        localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
-    });
-});
-Cypress.Commands.add('randomString', randomString)
-
-function randomString(length) {
-
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-
-}
-
